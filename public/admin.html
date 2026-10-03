@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rose — Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div id="loginView" class="login-view">
+    <div class="login-card">
+      <div class="admin-logo"><span>R</span>ose</div>
+      <p class="eyebrow">ADMIN PANEL</p>
+      <h1>Welcome back.</h1>
+      <p>Kelola menu, harga, kontak, lokasi, dan informasi Rose dari satu tempat.</p>
+      <input id="loginPassword" type="password" placeholder="Password admin">
+      <button id="loginBtn" class="primary">Masuk ke Admin</button>
+      <small id="loginError"></small>
+      <a href="/" class="back">← Kembali ke website</a>
+    </div>
+  </div>
+
+  <div id="adminApp" class="admin-app hidden">
+    <aside class="sidebar">
+      <div class="admin-logo"><span>R</span>ose</div>
+      <p class="side-label">MANAGEMENT</p>
+      <button class="side-btn active" data-section="dashboard">▦ Dashboard</button>
+      <button class="side-btn" data-section="menus">◉ Menu</button>
+      <button class="side-btn" data-section="settings">⚙ Pengaturan</button>
+      <a href="/" class="side-link">↗ Lihat Website</a>
+      <button id="logoutBtn" class="logout">Keluar</button>
+    </aside>
+
+    <main class="admin-main">
+      <header class="topbar"><div><p class="eyebrow">ROSE RESTAURANT</p><h2 id="pageTitle">Dashboard</h2></div><span id="status">● Connected</span></header>
+
+      <section id="dashboardSection" class="section-panel">
+        <div class="stats">
+          <div class="stat"><span>Total Menu</span><strong id="statMenus">0</strong></div>
+          <div class="stat"><span>Menu Aktif</span><strong id="statActive">0</strong></div>
+          <div class="stat"><span>Kategori</span><strong id="statCategories">0</strong></div>
+        </div>
+        <div class="welcome-card">
+          <p class="eyebrow">QUICK CONTROL</p>
+          <h1>Everything Rose,<br><em>one place.</em></h1>
+          <p>Gunakan menu di kiri untuk mengubah isi website tanpa menyentuh kode utama.</p>
+        </div>
+      </section>
+
+      <section id="menusSection" class="section-panel hidden">
+        <div class="panel-head"><div><p class="eyebrow">CONTENT</p><h2>Daftar Menu</h2></div><button id="addMenuBtn" class="primary">+ Tambah Menu</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Menu</th><th>Kategori</th><th>Harga</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="menuTable"></tbody></table></div>
+      </section>
+
+      <section id="settingsSection" class="section-panel hidden">
+        <div class="panel-head"><div><p class="eyebrow">WEBSITE</p><h2>Pengaturan</h2></div></div>
+        <form id="settingsForm" class="settings-grid">
+          <label>Nama Restoran<input name="restaurantName"></label>
+          <label>Tagline<input name="tagline"></label>
+          <label>Nomor WhatsApp<input name="whatsapp"></label>
+          <label>Instagram<input name="instagram"></label>
+          <label class="wide">Alamat<input name="address"></label>
+          <label>Jam Buka<input name="hours"></label>
+          <label class="wide">Judul Hero<input name="heroTitle"></label>
+          <label class="wide">Teks Hero<textarea name="heroText"></textarea></label>
+          <label class="wide">Deskripsi Restoran<textarea name="description"></textarea></label>
+          <div class="wide"><button class="primary" type="submit">Simpan Pengaturan</button><span id="saveSettingsMsg"></span></div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal hidden" id="menuModal">
+    <div class="modal-card">
+      <div class="modal-head"><h2 id="modalTitle">Tambah Menu</h2><button id="closeModal">×</button></div>
+      <form id="menuForm">
+        <input type="hidden" name="id">
+        <label>Nama Menu<input name="name" required></label>
+        <div class="two"><label>Kategori<input name="category" required></label><label>Harga<input name="price" type="number" min="0" required></label></div>
+        <label>Deskripsi<textarea name="description"></textarea></label>
+        <label>URL Gambar<input name="image" placeholder="https://..."></label>
+        <div class="two"><label>Badge<input name="badge" placeholder="Signature / New"></label><label class="check"><input name="available" type="checkbox" checked> Tersedia</label></div>
+        <button class="primary full" type="submit">Simpan Menu</button>
+      </form>
+    </div>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>
