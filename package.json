@@ -1,0 +1,13 @@
+{
+  "name": "rose-restaurant",
+  "version": "1.0.0",
+  "description": "Website restoran Rose dengan admin panel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
